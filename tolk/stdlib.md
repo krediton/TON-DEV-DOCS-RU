@@ -266,8 +266,8 @@ createEmptyDict() // доступен после импорта
 Если у вас нестандартная установка, вы можете передать переменную окружения `TOLK_STDLIB`. Это стандартная практика для компиляторов.
 
 Оболочка WASM [tolk-js](https://github.com/ton-blockchain/tolk-js) также содержит stdlib.
-So, when you take tolk-js or blueprint, all stdlib functions are still available out of the box.
+Поэтому, когда вы берете tolk-js или Blueprint, все функции stdlib сразу доступны из коробки.
 
-IDE plugins (both JetBrains and VS Code) also auto-locate stdlib to provide auto-completion.
-If you use blueprint, it automatically installs tolk-js, and therefore, folder `node_modules/@ton/tolk-js/` exists in your project file structure.
-Inside, there are `common.tolk`, `tvm-dicts.tolk`, and others.
+IDE плагины (JetBrains и VS Code) также автоматически обнаруживают stdlib для автоподстановки.
+Если вы используете Blueprint, он автоматически устанавливает tolk-js, и поэтому, папка `node_modules/@ton/tolk-js/` существует в структуре файла проекта.
+Внутри есть `common.tolk`, `tvm-dicts.tolk`, и другие.
