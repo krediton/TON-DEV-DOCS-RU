@@ -1,14 +1,14 @@
 ---
-title: Overview
+title: Обзор
 ---
 
-import Button from '@site/src/components/button'
 
-# Tolk Language: overview
 
-**Tolk** is a new language for writing smart contracts in TON. Think of Tolk as the "**next‑generation FunC**".
-Tolk compiler is literally a fork of FunC compiler, introducing familiar syntax similar to TypeScript,
-but leaving all low-level optimizations untouched.
+# Язык Tolk: обзор
+
+**Tolk** - это новый язык для написания смарт контрактов в TON. Подумайте о Tolk как о "**новом поколении FunC**".
+Компилятор Tolk буквально является форком компилятора FunC, представляя знакомый синтаксис, похожий на TypeScript,
+но оставляя все низкоуровневые оптимизаторы нетронутыми.
 
 ```tolk
 import "storage.tolk"
@@ -33,7 +33,7 @@ get currentCounter(): int {
 ```
 
 <details>
-  <summary><b>See same logic implemented with FunC</b></summary>
+  <summary><b>Смотрите ту же логику, реализованную на FunC</b></summary>
 
 ```func
 #include "storage.fc";
@@ -60,96 +60,92 @@ int currentCounter() method_id {
 
 </details>
 
-<Button href="https://github.com/ton-blockchain/convert-func-to-tolk" colorType={'primary'} sizeType={'sm'}>
-Try a FunC → Tolk converter </Button>
-<Button href="/v3/documentation/smart-contracts/tolk/tolk-vs-func/in-short" colorType={'secondary'} sizeType={'sm'}>
-Read "Tolk vs FunC differences" </Button>
+Попробуйте FunC → Tolk конвертерПрочитайте "Tolk vs FunC различия"
 
 <div style={{height: '2em'}}></div>
 
-## Motivation behind Tolk
+## Мотивация создания Tolk
 
-FunC is awesome.
-It is really low-level and encourages a programmer to think about compiler internals.
-It gives full control over TVM assembler, allowing a programmer to make his contract as effective as possible.
-If you get used to it, you love it.
+FunC - потрясающий.
+Это действительно низкий уровень и побуждает программиста думать о внутреннем компиляторе.
+Он обеспечивает полный контроль над ассемблером TVM, позволяя программисту сделать его контракт максимально эффективным.
+Если вы привыкли к нему, то любите его.
 
-But there is a problem.
-FunC is "functional C", and it's for ninja.
-If you are keen on Lisp and Haskell, you'll be happy.
-But if you are a JavaScript / Go / Kotlin developer, its syntax is peculiar for you, leading to occasional mistakes.
-A struggle with syntax may decrease your motivation for digging into TON.
+Однако есть проблема.
+FunC это "функциональный C", и это для ниндзя.
+Если вам интересен Lisp и Haskell, вы будете счастливы.
+Но если вы являетесь разработчиком JavaScript / Go / Kotlin, то FunC синтаксис будет не свойственен для вас, что приводит к случайным ошибкам.
+Борьба с синтаксисом может снизить вашу мотивацию ко входу в ТОН.
 
-Imagine, what if there was a language, also smart, also low-level, but not functional and not like C?
-Leaving all beauty and complexity inside, what if it would be more similar to popular languages at first glance?
+Представьте, что если бы был язык, такой же умный, такой же низкоуровневый, но не функциональный и не похожий на C?
+Оставляя всю красоту и сложность внутри, что если бы на первый взгляд был более похож на популярные языки?
 
-That's what Tolk is about.
+Вот в чем суть Tolk.
 
-## Migrating from FunC to Tolk
+## Переход с FunC на Tolk
 
-If you know FunC and want to try a new syntax, your way is:
+Если вы знаете FunC и хотите попробовать новый синтаксис, ваш способ:
 
-1. Read [Tolk vs FunC: in short](/v3/documentation/smart-contracts/tolk/tolk-vs-func/in-short).
-2. With blueprint, create a new Tolk contract (for example, a counter) and experiment around. Remember, that almost all stdlib functions are renamed to ~~verbose~~ clear names. Here is [a mapping](/v3/documentation/smart-contracts/tolk/tolk-vs-func/stdlib).
-3. Try a [converter](https://github.com/ton-blockchain/convert-func-to-tolk) for your existing contracts or one from [FunC Contracts](/v3/documentation/smart-contracts/contracts-specs/examples). Keep in mind that contracts written in Tolk from scratch would definitely look nicer than being auto-converted. For instance, using logical operators instead of bitwise tremendously increases code readability.
+1. Прочтите [Tolk vs FunC: коротко](in-short.md).
+2. С помощью Blueprint создайте новый контракт Tolk (например, счетчик) и экспериментируйте с ним. Помните, что почти все stdlib функции переименованы в ~~подробные~~ понятные имена. Вот [сопоставление](/v3/documentation/smart-contracts/tolk/tolk-vs-func/stdlib).
+3. Попробуйте [конвертер](https://github.com/ton-blockchain/convert-func-to-tolk) для ваших существующих контрактов или один из [примеров FunC Contracts](/v3/documentation/smart-contracts/contracts-specs/examples). Имейте в виду, что контракты, написанные на Tolk, с нуля будут выглядеть лучше, чем автоматическая конвертация. Например, использование логических операторов вместо побитового значительно увеличивает читабельность кода.
 
-## How to try Tolk if you don't know FunC
+## Как попробовать Tolk, если вы не знаете FunC
 
-:::tip Currently, this documentation assumes that you know FunC
-The documentation describes "Tolk vs FunC" differences.
-Later it will be adapted to land newcomers. Moreover, FunC will eventually become deprecated,
-and all code snippets throughout the whole documentation will be rewritten to Tolk.
+:::tip В настоящее время эта документация предполагает, что вы знаете FunC
+Документация описывает "Tolk vs FunC" различия.
+Позднее она будет адаптирована и для новичков. Более того, FunC в конечном итоге станет устаревшим,
+и все фрагменты кода во всей документации будут переписаны на Tolk.
 :::
 
-If you are new to TON, your way is:
+Если вы новичок в TON, ваш путь:
 
-1. Dig into [this documentation](/v3/documentation/smart-contracts/overview) to acquire basic on development in TON. No matter what language you'll use, you need to be aware of cells, slices, TON asynchronous nature after all.
-2. Facing FunC snippets, you can still use FunC, or try to express the same in Tolk. If FunC syntax is peculiar for you, don't worry: the goal of Tolk is exactly to fix this issue.
-3. Once you gain some understanding of what's going on, try using Tolk with [blueprint](https://github.com/ton-org/blueprint).
+1. Покопаться в [этой документации](/v3/documentation/smart-contracts/overview) для получения базовых знаний о разработке в TON. Независимо от того, какой язык вы будете использовать, вам нужно знать о ячейках, слайсах, асинхронной природе TON.
+2. Сталкиваясь с фрагментами FunC вы можете использовать FunC или использовать их в Tolk. Если синтаксис FunC кажется вам необычным, не волнуйтесь: цель Tolk — как раз исправить эту проблему.
+3. Как только вы поймете, что происходит, попробуйте использовать Tolk с помощью [blueprint](https://github.com/ton-org/blueprint).
 
-## Tooling around Tolk Language
+## Инструменты окружения Tolk
 
-Sources of the Tolk compiler are a part of the `ton-blockchain` [repo](https://github.com/ton-blockchain/ton).
-Besides the compiler, we have:
+Исходники компилятора Tolk являются частью `ton-blockchain` [repo](https://github.com/ton-blockchain/ton).
+Помимо компилятора, у нас есть:
 
-1. [tolk-js](https://github.com/ton-blockchain/tolk-js) — a WASM wrapper for Tolk compiler.
-2. [JetBrains IDE plugin](https://github.com/ton-blockchain/intellij-ton) supports Tolk besides FunC, Fift, TL/B, and Tact.
-3. [VS Code Extension](https://github.com/ton-blockchain/tolk-vscode) enabling Tolk Language support.
-4. [Converter from FunC to Tolk](https://github.com/ton-blockchain/convert-func-to-tolk) — convert a `.fc` file to a `.tolk` file with a single `npx` command.
-5. Tolk Language is available in [blueprint](https://github.com/ton-org/blueprint).
+1. [tolk-js](https://github.com/ton-blockchain/tolk-js) — обертка WASM для компилятора Tolk.
+2. [Плагин JetBrains IDE](https://github.com/ton-blockchain/Intellij-ton) поддерживает Tolk помимо FunC, Fift, TL/B и Tact.
+3. [VS Code Extension](https://github.com/ton-blockchain/tolk-vscode) включает поддержку Tolk Language.
+4. [Конвертер из FunC в Tolk](https://github.com/ton-blockchain/convert-func-to-tolk) — конвертация файла `.fc` в файл `.tolk` с одной командой `npx`.
+5. Язык Tolk доступен в [blueprint](https://github.com/ton-org/blueprint).
 
-## Is Tolk production-ready?
+## Готов ли Tolk для использования?
 
-The Tolk compiler, a fork of the FunC compiler, is deemed production-ready, albeit somewhat experimental at the moment.
+Компилятор Tolk, ветка компилятора FunC, в данный момент считается production-готовым, хотя и экспериментальным.
 
-Undiscovered bugs may exist, potentially inherited from FunC or attributable to TVM characteristics.
-Anyway, no matter what language you use, you should cover your contracts with tests to reach high reliability.
+Необнаруженные ошибки могут существовать, потенциально унаследоваться от FunC или быть отнесены к характеристикам TVM.
+В любом случае независимо от того, на каком языке вы будете писать, вы должны покрывать ваши контракты тестами для достижения высокой надежности.
 
-## Roadmap
+## Дорожная Карта
 
-The first released version of Tolk is v0.6, emphasizing [missing](/v3/documentation/smart-contracts/tolk/changelog#how-tolk-was-born) FunC v0.5.
+Первая выпущенная версия Толка v0.6, подчеркивающая [отсутствие](/v3/documentation/smart-contracts/tolk/changelog#how-tolk-born) FunC v0.5.
 
-Here are some (yet not all and not ordered in any way) points to be investigated:
+Вот некоторые (но не все и не упорядоченные каким-либо образом) пункты, которые следует изучить:
 
-- type system improvements: boolean type, nullability, dictionaries
-- structures, with auto-packing to/from cells, probably integrated with message handlers
-- structures with methods, probably generalized to cover built-in types
-- some integrations with TL scheme, either syntactical or via code generation
-- human-readable compiler errors
-- easier messages sending
-- better experience for common use-cases (jettons, nft, etc.)
-- gas and stack optimizations, AST inlining
-- extending and maintaining stdlib
-- think about some kind of ABI (how explorers "see" bytecode)
-- think about gas and fee management in general
+- улучшения системы типов: тип boolean, nullability, словари
+- структуры, с автоматической упаковкой из/в ячейки, возможно интегрированы с обработчиками сообщений
+- структуры с методами, вероятно, обобщенными для охвата встроенных типов
+- некоторые интеграции с TL схемой, либо синтаксической, либо с помощью генерации кода
+- легко читаемые (понятные) ошибки выдаваемые компилятором
+- более простая отправка сообщений
+- лучший опыт для общих случаев использования (jettons, nft и т. д.)
+- оптимизация газа и стека, встроенный AST
+- расширение и поддержание stdlib
+- подумайте о некотором виде ABI (как исследователи "видеть" байт-код)
+- подумайте об управлении газом и управлении в целом
 
-Note, that most of the points above are a challenge to implement.
-At first, FunC kernel must be fully refactored to "interbreed" with abilities it was not designed for.
+Следует отметить, что большая часть вышеупомянутых моментов представляет собой сложную задачу.
+Сначала ядро ​​FunC должно быть полностью переработано, чтобы «скрещиваться» с возможностями, для которых оно не было предназначено.
 
-Also, I see Tolk evolution partially guided by community needs.
-It would be nice to talk to developers who have created interconnected FunC contracts,
-to absorb their pain points and discuss how things could be done differently.
+Кроме того, я считаю, что эволюция Tolk частично направляется потребностями сообщества.
+Было бы неплохо поговорить с разработчиками, которые создали взаимосвязанные контракты FunC, чтобы понять их болевые точки и обсудить, как можно сделать что-то по-другому.
 
-## Issues and Contacts
+## Вопросы и контакты
 
-If you face issue, connect to developer society on [TON Dev Chats](https://t.me/addlist/1r5Vcb8eljk5Yzcy) or create GitHub issues.
+Если у вас возникли проблемы, свяжитесь с обществом разработчиков [TON Dev Chats](https://t.me/addlist/1r5Vcb8eljk5Yzcy) или создайте issue GitHub.
