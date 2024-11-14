@@ -1,13 +1,13 @@
-# Tolk vs FunC: in detail
+# Tolk vs FunC: подробно
 
-A very huge list below. Will anyone have enough patience to read it up to the end?..
+Очень большой список ниже. Будет ли у кого-то достаточно терпения, чтобы прочитать его до конца?
 
-:::tip There is a compact version
-Here: [Tolk vs FunC: in short](/v3/documentation/smart-contracts/tolk/tolk-vs-func/in-short)
+:::tip Есть компактная версия
+Здесь: [Tolk vs FunC: короткое](/v3/documentation/smart-contracts/tolk/tolk-vs-func/in-short)
 :::
 
 <h3 className="cmp-func-tolk-header">
-  ✅ Traditional comments :)
+  ✅ Традиционные комментарии :)
 </h3>
 
 <table className="cmp-func-tolk-table">
@@ -30,14 +30,14 @@ Here: [Tolk vs FunC: in short](/v3/documentation/smart-contracts/tolk/tolk-vs-fu
 </table>
 
 <h3 className="cmp-func-tolk-header">
-  ✅ `2+2` is 4, not an identifier. Identifiers can only be alpha-numeric
+  ✅ `2+2` это 4, а не идентификатор. Идентификаторы могут быть только алфавитно-цифровыми
 </h3>
 
-In FunC, almost any character can be a part of identifier.
-For example, `2+2` (without a space) is an identifier.
-You can even declare a variable with such a name.
+В FunC практически любой символ может быть частью идентификатора.
+Например, «2+2» (без пробела) является идентификатором.
+Вы даже можете объявить переменную с таким именем.
 
-In Tolk, spaces are not mandatory. `2+2` is 4, as expected. `3+~x` is `3 + (~ x)`, and so on.
+В Tolk, пробелы не обязательны. `2+2` — 4, как ожидалось. `3+~x` это `3 + (~ x)` и так далее.
 
 <table className="cmp-func-tolk-table different-col-widths">
   <thead>
@@ -54,10 +54,10 @@ In Tolk, spaces are not mandatory. `2+2` is 4, as expected. `3+~x` is `3 + (~ x)
   </tbody>
 </table>
 
-More precisely, an identifier can start from <code style={{display: 'inline-block'}}>{'[a-zA-Z$_]'}</code>
-and be continued with <code style={{display: 'inline-block'}}>{'[a-zA-Z0-9$_]'}</code>. Note, that `?`, `:`, and others are not valid symbols, `found?` and `op::increase` are not valid identifiers.
+Точнее, идентификатор может начинаться с {'[a-zA-Z$_]'}
+и продолжаться с {'[a-zA-Z0-9$_]'}. Обратите внимание, что `?`, `:`, и другие недопустимы в качестве символов, `found?` и `op::increase` не являются допустимыми идентификаторами.
 
-You can use backticks to surround an identifier, and then it can contain any symbols (similar to Kotlin and some other langs). Its potential usage is to allow keywords be used as identifiers, in case of code generation by a scheme, for example.
+Вы можете использовать обратные кавычки для заключения идентификатора в кавычки, и тогда он может содержать любые символы (аналогично Kotlin и некоторым другим языкам). Его потенциальное применение — разрешить использование ключевых слов в качестве идентификаторов, например, в случае генерации кода по схеме.
 
 <table className="cmp-func-tolk-table">
   <thead>
@@ -79,18 +79,16 @@ You can use backticks to surround an identifier, and then it can contain any sym
 </table>
 
 <h3 className="cmp-func-tolk-header">
-  ✅ Impure by default, compiler won't drop user function calls
+  ✅ Impure по умолчанию, компилятор не отменяет вызовы пользовательских функций
 </h3>
 
-FunC has an `impure` function specifier. When absent, a function is treated as pure. If its result is unused, its call was deleted by the compiler.
+В FunC есть спецификатор функции `impure`. При отсутствии функция рассматривается как чистая (пустая). Если результат не используется, то её вызов будет удалён компилятором.
 
-Though this behavior is documented, it is very unexpected to newcomers.
-For instance, various functions that don't return anything (throw an exception on mismatch, for example),
-are silently deleted. This situation is spoilt by the fact that FunC doesn't check and validate function body,
-allowing impure operations inside pure functions.
+Несмотря на то, что это поведение документировано, новичкам это очень неожиданно.
+Например, различные функции, которые не возвращают ничего (например, бросьте исключение на несоответствие),
+тихо удаляются. Ситуацию портит тот факт, что FunC не проверяет и не валидирует тело функции, допуская нечистые операции внутри чистых функций.
 
-In Tolk, all functions are impure by default. You can mark a function pure with annotation,
-and then impure operations are forbidden in its body (exceptions, globals modification, calling non-pure functions, etc.).
+В Tolk все функции по умолчанию impure. Вы можете пометить функцию как pure с помощью аннотации, и тогда в ее теле будут запрещены нечистые операции (исключения, изменение глобальных переменных, вызов нечистых функций и т. д.).
 
 <h3 className="cmp-func-tolk-header">
   ✅ New functions syntax: `fun` keyword, `@` attributes, types on the right (like in TypeScript, Kotlin, Python, etc.)
