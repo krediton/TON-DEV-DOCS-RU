@@ -7,19 +7,19 @@ title: "Tolk vs FunC: мутации"
 :::tip TLDR
 
 - нет  тильда `~` методов
-- `cs.loadInt(32)` modifies a slice and returns an integer
-- `b.storeInt(x, 32)` modifies a builder
-- `b = b.storeInt()` also works, since it not only modifies, but returns
-- chained methods work identically to JS, they return `self`
-- everything works exactly as expected, similar to JS
-- no runtime overhead, exactly same Fift instructions
-- custom methods are created with ease
-- tilda `~` does not exist in Tolk at all
+- `cs.loadInt(32)` изменяет slice и возвращает integer
+- `b.storeInt(x, 32)` изменяет конструктор
+- `b = b.storeInt()` также работает, поскольку он не только модифицирует, но и возвращает
+- Цепочечные методы работают идентично JS, они возвращают `self`
+- все работает точно так, как ожидалось, как и в JS
+- никаких накладных расходов во время выполнения, точно так же как инструкции Fift
+- пользовательские методы создаются с легкостью
+- tilda `~` вообще не существует в Tolk
   :::
 
-This is a drastic change. If FunC has `.methods()` and `~methods()`, Tolk has only dot, one and only way to call a `.method()`. A method may _mutate_ an object, or may not. Unlike the list "in short", it's a behavioral and semantic difference from FunC.
+Это радикальное изменение. Если в FunC есть `.methods()` и `~methods()`, Tolk имеет только точку, один и только один способ вызова `.method()`. Метод может _изменять_ объект или нет. В отличие от списка "короче", это семантическое отличие от FunC.
 
-The goal is to have calls identical to JS and other languages:
+Цель состоит в том, чтобы вызовы совпадали с JS и другими языками:
 
 <table className="cmp-func-tolk-table">
   <thead>
@@ -64,7 +64,7 @@ The goal is to have calls identical to JS and other languages:
   </tbody>
 </table>
 
-In order to make this available, Tolk offers a mutability conception, which is a generalization of what a tilda means in FunC.
+Чтобы сделать это доступным, Tolk предлагает концепцию изменяемости, которая является обобщением того, что означает тильда в FunC.
 
 <h3 className="cmp-func-tolk-header">
   By default, all arguments are copied by value (identical to FunC)
