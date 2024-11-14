@@ -1,12 +1,12 @@
 ---
-title: "Tolk vs FunC: mutability"
+title: "Tolk vs FunC: мутации"
 ---
 
-# Mutability in Tolk vs tilda functions in FunC
+# Изменяемость в Tolk vs тильда-функции в FunC
 
 :::tip TLDR
 
-- no `~` tilda methods
+- нет  тильда `~` методов
 - `cs.loadInt(32)` modifies a slice and returns an integer
 - `b.storeInt(x, 32)` modifies a builder
 - `b = b.storeInt()` also works, since it not only modifies, but returns
