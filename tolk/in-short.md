@@ -1,9 +1,9 @@
-# Tolk vs FunC: in short
+# Tolk vs FunC: коротко
 
-Tolk is much more similar to TypeScript and Kotlin than to C and Lisp.
-But it still gives you full control over TVM assembler, since it has a FunC kernel inside.
+Tolk гораздо больше похож на TypeScript и Kotlin, чем на C и Lisp.
+Но он все еще дает вам полный контроль над сборщиком TVM, так как он имеет ядро FunC внутри.
 
-1. Functions are declared via `fun`, get methods via `get`, variables via `var` (and `val` for immutable), putting types on the right; parameter types are mandatory; return type can be omitted (auto inferred), as well as for locals; specifiers `inline` and others are `@` attributes
+1. Функции декларируются через `fun`, гет-методы через `get`, переменные через `var` (и `val` для неизменяемых), типы указываются справа; типы параметров обязательны; тип возвращаемого значения может быть опущен (автоматически определяется), а также для локальных переменных; спецификаторы 'inline' и другие являются атрибутами `@`
 
 ```tolk
 global storedV: int;
@@ -14,46 +14,46 @@ fun parseData(cs: slice): cell {
 }
 
 @inline
-fun sum(a: int, b: int) {   // auto inferred int
-    val both = a + b;       // same
-    return both;
+веселая сумма(a: int, b: int) { // auto inferred int
+    val both = a + b; // то же самое
+    обратно;
 }
 
 get currentCounter(): int { ... }
 ```
 
-2. No `impure`, it's by default, compiler won't drop user function calls
-3. Not `recv_internal` and `recv_external`, but `onInternalMessage` and `onExternalMessage`
-4. `2+2` is 4, not an identifier; identifiers are alpha-numeric; use naming `const OP_INCREASE` instead of `const op::increase`
-5. Logical operators AND `&&`, OR `||`, NOT `!` are supported
-6. Syntax improvements:
-   - `;; comment` → `// comment`
-   - `{- comment -}` → `/* comment */`
-   - `#include` → `import`, with a strict rule "import what you use"
-   - `~ found` → `!found` (for true/false only, obviously) (true is -1, like in FunC)
+2. Нет `impure`, он по умолчанию, компилятор не отменяет вызовы пользовательских функций
+3. Вместо `recv_internal` и `recv_external`, используется `onInternalMessage` и `onExternalMessage`
+4. `2+2` это 4, а не идентификатор; идентификаторы являются алфавитно-цифровыми; используйте имя `const OP_INCREASE` вместо `const op::increase`
+5. Логические операторы AND `&&`, OR `||`, NOT `!` поддерживаются
+6. Улучшение синтаксиса:
+   - `;; комментарий` → \`// комментарий"
+   - `{- комментарий -}` → `/* комментарий */`
+   - `#include` → `import`, со строгим правилом "импортировать то, что вы используете"
+   - `~ found` → `!found` (только для true/false, разумеется) (истина -1, как в FunC)
    - `v = null()` → `v = null`
-   - `null?(v)` → `v == null`, same for `builder_null?` and others
-   - `~ null?(v)` → `c != null`
+   - `null?(v)` → `v == null`, то же самое для `builder_null?` и других
+   - `~ null?(v)` → `c !=null`
    - `throw(excNo)` → `throw excNo`
    - `catch(_, _)` → `catch`
    - `catch(_, excNo)` → `catch(excNo)`
    - `throw_unless(excNo, cond)` → `assert(cond, excNo)`
    - `throw_if(excNo, cond)` → `assert(!cond, excNo)`
    - `return ()` → `return`
-   - `do ... until (cond)` → `do ... while (!cond)`
+   - `do ... until (cond)` → `do ... пока (!cond)`
    - `elseif` → `else if`
    - `ifnot (cond)` → `if (!cond)`
-7. A function can be called even if declared below; forward declarations not needed; the compiler at first does parsing, and then it does symbol resolving; there is now an AST representation of source code
-8. stdlib functions renamed to ~~verbose~~ clear names, camelCase style; it's now embedded, not downloaded from GitHub; it's split into several files; common functions available always, more specific available with `import "@stdlib/tvm-dicts"`, IDE will suggest you; here is [a mapping](/v3/documentation/smart-contracts/tolk/tolk-vs-func/stdlib)
-9. No `~` tilda methods; `cs.loadInt(32)` modifies a slice and returns an integer; `b.storeInt(x, 32)` modifies a builder; `b = b.storeInt()` also works, since it not only modifies, but returns; chained methods work identically to JS, they return `self`; everything works exactly as expected, similar to JS; no runtime overhead, exactly same Fift instructions; custom methods are created with ease; tilda `~` does not exist in Tolk at all; [more details here](/v3/documentation/smart-contracts/tolk/tolk-vs-func/mutability)
+7. Функцию можно вызывать, даже если она объявлена ниже; предварительные декларации не требуются; компилятор сначала анализирует, а затем делает вывод символов; теперь AST предоставляет исходный код
+8. stdlib функции переименованы в ~~verbose~~ понятное именование, camelCase стиль; теперь он встроен, а не загружен с GitHub; он разделен на несколько файлов; общие функции доступны, более конкретные с помощью `import "@stdlib/tvm-dicts"`, IDE предложит вам; вот [соответствие](/v3/documentation/smart-contracts/tolk/tolk-vs-func/stdlib)
+9. Нет методов тильды `~`; `cs.loadInt(32)` изменяет маску и возвращает целое число; `b.storeInt(x, 32)` изменяет билдер; `b = b.storeInt()` также работает, поскольку он не только модифицирует, но и возвращает значение; комбинированные методы работают идентично с JS, они возвращают «self»; все работает точно так же, как ожидается, как и в JS; нет накладных расходов, точно как инструкции в Fift; пользовательские методы с легкостью создаются; в Tolk вообще не существует тильды `~`; [подробнее здесь](/v3/documentation/smart-contracts/tolk/tolk-vs-func/mutability)
 
-#### Tooling around
+#### Инструменты окружения
 
-- JetBrains plugin exists
-- VS Code extension [exists](https://github.com/ton-blockchain/tolk-vscode)
-- WASM wrapper for blueprint [exists](https://github.com/ton-blockchain/tolk-js)
-- And even a converter from FunC to Tolk [exists](https://github.com/ton-blockchain/convert-func-to-tolk)
+- Плагин JetBrains создан
+- Расширение VS Code [exists](https://github.com/ton-blockchain/tolk-vscode)
+- WASM обертка для Blueprint [создана](https://github.com/ton-blockchain/tolk-js)
+- И даже конвертер из FunC в Tolk [имеется](https://github.com/ton-blockchain/convert-funct--to-tolk)
 
-#### Where to go next
+#### Читать дальше
 
-[Tolk vs FunC: in detail](/v3/documentation/smart-contracts/tolk/tolk-vs-func/in-detail)
+[Tolk vs FunC: подробнее](/v3/documentation/smart-contracts/tolk/tolk-vs-func/in-detail)
