@@ -1,29 +1,29 @@
-# History of Tolk
+# История Tolk
 
-When new versions of Tolk are released, they will be mentioned here.
+После выпуска новых версий Tolk, они будут упомянуты здесь.
 
 ## v0.6
 
-The first public release. Here are some notes about its origin:
+Первый публичный релиз. Вот несколько заметок о его происхождении:
 
-## How Tolk was born
+## Как родился Tolk
 
-In June 2024, I created a pull request [FunC v0.5.0](https://github.com/ton-blockchain/ton/pull/1026).
-Besides this PR, I've written a roadmap — what can be enhanced in FunC, syntactically and semantically.
+В июне 2024 года я создал запрос на слияние [FunC v0.5.0](https://github.com/ton-blockchain/ton/pull/1026).
+Кроме этого PR, я написал «дорожную карту» — что может быть улучшено в FunC, синтаксически и семантически.
 
-All in all, instead of merging v0.5.0 and continuing developing FunC, we decided to **fork** it.
-To leave FunC untouched, as it is. As it always was. And to develop a new language, driven by a fresh and new name.
+В общем, вместо слияния v0.5.0 и продолжения разработки FunC, мы решили сделать его **fork**.
+Чтобы оставить FunC нетронутым, как есть. Как и всегда было. И разработать новый язык, движимый свежим и новым именем.
 
-For several months, I have worked on Tolk privately. I have implemented a giant list of changes.
-And it's not only about the syntax. For instance, Tolk has an internal AST representation, completely missed in FunC.
+В течение нескольких месяцев я работал над Tolk один. Я реализовал гигантский список изменений.
+И это не только о синтаксисе. Например, Tolk имеет внутреннее представление AST, полностью пропущенное в FunC.
 
-On TON Gateway, on 1-2 November in Dubai, I had a speech presenting Tolk to the public, and we released it the same day.
-Once the video is available, I'll attach it here.
+На TON Gateway, 1-2 ноября в Дубае, я выступил с речью, представившей Tolk общественности, и мы выпустили его в тот же день.
+Как только видео будет доступно, я прикреплю его здесь.
 
-Here is the very first pull request: ["Tolk Language: next-generation FunC"](https://github.com/ton-blockchain/ton/pull/1345).
+Вот первый запрос на слияние: ["Tolk Language: next-generation FunC"](https://github.com/ton-blockchain/ton/pull/1345).
 
-The first version of the Tolk Language is v0.6, a metaphor of FunC v0.5 that missed a chance to occur.
+Первая версия языка Tolk v0.6, это метафора FunC v0.5, который упустил шанс.
 
-## Meaning of the name "Tolk"
+## Значение названия "Tolk"
 
-I'll update this section after announcing Tolk on TON Gateway.
+Я обновлю этот раздел после объявления Tolk на TON Gateway.
